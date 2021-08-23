@@ -20,3 +20,38 @@
  * dosyasını döngü içinde dahil etmeli ve her yazı için detayları göstermelisiniz.
  */
 
+define('NotDirect2', TRUE);
+
+include_once "functions.php";
+include "post.php";
+
+
+$randomnumber = getRandomPostCount(5,15);
+
+$rand_array_post = getLatestPosts($randomnumber);
+
+
+$id = 1;
+$color="";
+foreach ($rand_array_post as $post){
+
+    switch ($post["type"]) {
+        case "urgent":
+            $color="background-color: red;";
+            break;
+        case "warning":
+            $color="background-color: yellow;";
+            break;
+        case "normal":
+            $color="background-color: none;";
+            break;
+    }
+
+
+    //echo $id." ".$post["title"]." ".$post["type"]."<br>";
+    echo "<div style='". $color."'>";
+    echo getPostDetails($id,$post["title"])."</div>";
+
+    $id++;
+
+}

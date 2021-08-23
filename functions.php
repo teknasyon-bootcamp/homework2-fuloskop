@@ -42,10 +42,27 @@ function getPostDetails($id, $title)
     echo "<h1>".$title." (#".$id.")</h1>";
     echo <<<EOT
 <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a iaculis justo, ac molestie justo. Integer semper nibh non imperdiet blandit. Integer nec diam eget sapien viverra rutrum ut eu justo. Suspendisse efficitur pretium eleifend. Vivamus ex nibh, euismod eget massa ut, accumsan ullamcorper nisi. Phasellus tristique magna et nibh dictum rhoncus. Phasellus at metus quis mi egestas blandit. Vestibulum lacinia ut tortor nec consectetur. Nulla sed risus ut est imperdiet vulputate ac non quam. Aliquam viverra erat vitae diam commodo, et molestie metus ultricies. Praesent rutrum urna a nisi egestas aliquam sit amet eu eros.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Proin a iaculis justo, ac molestie justo. Integer semper nibh non imperdiet blandit. 
+    Integer nec diam eget sapien viverra rutrum ut eu justo. Suspendisse efficitur pretium eleifend. 
+    Vivamus ex nibh, euismod eget massa ut, accumsan ullamcorper nisi. 
+    Phasellus tristique magna et nibh dictum rhoncus. 
+    Phasellus at metus quis mi egestas blandit. 
+    Vestibulum lacinia ut tortor nec consectetur. 
+    Nulla sed risus ut est imperdiet vulputate ac non quam. 
+    Aliquam viverra erat vitae diam commodo, et molestie metus ultricies. 
+    Praesent rutrum urna a nisi egestas aliquam sit amet eu eros.
 </p>
 EOT;
 }
 
 // Aşağıya fonksiyonu tanımlayabilirsiniz.
 
+if(!defined('NotDirect')&&!defined('NotDirect2')) {
+    die('Direct access not permitted');
+}
+
+
+function getRandomPostCount($min, $max){
+    return rand($min, $max);
+}
