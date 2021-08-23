@@ -23,14 +23,14 @@
 define('NotDirect2', TRUE);
 
 include_once "functions.php";
-include "post.php";
+//include_once "post.php";
 
 
-$randomnumber = getRandomPostCount(5,15);
+$randomnumber = getRandomPostCount(5,30);
 
 $rand_array_post = getLatestPosts($randomnumber);
 
-
+/*
 $id = 1;
 $color="";
 foreach ($rand_array_post as $post){
@@ -55,3 +55,4 @@ foreach ($rand_array_post as $post){
     $id++;
 
 }
+*/

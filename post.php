@@ -26,7 +26,7 @@
 define('NotDirect', TRUE);
 
 include_once "functions.php";
-//include "posts.php";
+include_once "posts.php";
 
 
 
@@ -39,20 +39,28 @@ if(!isset($title)){
 if(!isset($type)){
     $type="urgent";
 }
+foreach ($rand_array_post as $post){
 
-switch ($type) {
-    case "urgent":
-        $color="background-color: red;";
-        break;
-    case "warning":
-        $color="background-color: yellow;";
-        break;
-    case "normal":
-        $color="background-color: none;";
-        break;
+    switch ($post["type"]) {
+        case "urgent":
+            $color="background-color: red;";
+            break;
+        case "warning":
+            $color="background-color: yellow;";
+            break;
+        case "normal":
+            $color="background-color: none;";
+            break;
+    }
+
+
+    //echo $id." ".$post["title"]." ".$post["type"]."<br>";
+    echo "<div style='". $color."'>";
+    echo getPostDetails($id,$post["title"])."</div>";
+
+    $id++;
+
 }
-echo "<div style='". $color."'>";
-echo getPostDetails($id,$title)."</div>";
 
 
 //var_dump($rand_array_post);
