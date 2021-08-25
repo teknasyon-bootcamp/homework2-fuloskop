@@ -16,6 +16,12 @@
  * bekliyoruz. Bununla ilgili detaylı bilgi diğer betiklerde yer alıyor.
  */
 
+
+if(!defined('NotDirect')) { // NotDirect define edilmemiş bir sayfadan geliniyorsa bu sayfaya o isteği öldürüm alttaki mesajı döndür
+    exit('Direct access not permitted');
+}
+
+
 function getLatestPosts($count = 5)
 {
     $posts = [];
@@ -58,9 +64,6 @@ EOT;
 
 // Aşağıya fonksiyonu tanımlayabilirsiniz.
 
-if(!defined('NotDirect')) { // NotDirect define edilmemiş bir sayfadan geliniyorsa bu sayfaya o isteği öldürüm alttaki mesajı döndür
-    die('Direct access not permitted');
-}
 
 
 function getRandomPostCount($min, $max){ //verilen 2 değer arasında bir rasgele sayı belirleme fonksiyonu
