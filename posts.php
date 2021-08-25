@@ -19,40 +19,18 @@
  * çalıştırmalısınız. Bu fonksiyondan aldığınız diziyi kullanarak `post.php` betik
  * dosyasını döngü içinde dahil etmeli ve her yazı için detayları göstermelisiniz.
  */
+if (!defined('NotDirect')) define('NotDirect', TRUE); // function sayfamızı açabilecek sayfalara NotDirect tanımlıyoruz ki onlar açabilsinler
 
-define('NotDirect2', TRUE);
-
-include_once "functions.php";
+include_once "functions.php";  // function klasörümüzü bir kez çağarıyoruz
 //include_once "post.php";
 
 
-$randomnumber = getRandomPostCount(5,30);
+$randomnumber = getRandomPostCount(5,30); // random bir sayı oluşturuyoruz
 
-$rand_array_post = getLatestPosts($randomnumber);
-
-/*
-$id = 1;
-$color="";
-foreach ($rand_array_post as $post){
-
-    switch ($post["type"]) {
-        case "urgent":
-            $color="background-color: red;";
-            break;
-        case "warning":
-            $color="background-color: yellow;";
-            break;
-        case "normal":
-            $color="background-color: none;";
-            break;
-    }
+$rand_array_posts = getLatestPosts($randomnumber); // random sayımızı getLatestPosts içine gönderiyoruz ve bize post dizisi dönüyor
 
 
-    //echo $id." ".$post["title"]." ".$post["type"]."<br>";
-    echo "<div style='". $color."'>";
-    echo getPostDetails($id,$post["title"])."</div>";
+foreach ($rand_array_posts as $id => $post) {// { ex : $post["title"] => string(7) "Yazı 3" $post["type"]=> string(6) "normal"
 
-    $id++;
-
+    include('post.php');  //post sayfasını bizim yeni id ve postumuzla çağarıyoruz
 }
-*/

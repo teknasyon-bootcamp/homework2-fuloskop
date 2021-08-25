@@ -23,25 +23,27 @@
  * - `getPostDetails` fonksiyonu tetiklenerek ilgili içeriğin çıktısı gösterilmeli.
  */
 
-define('NotDirect', TRUE);
+if (!defined('NotDirect')) define('NotDirect', TRUE); // function sayfamızı açabilecek sayfalara NotDirect tanımlıyoruz ki onlar açabilsinler
 
-include_once "functions.php";
-include_once "posts.php";
+include_once "functions.php"; // function klasörümüzü bir kez çağarıyoruz
+//include_once "posts.php";
 
 
 
-if(!isset($id)){
+if(!isset($id)){ // id yok ise id yi 1 olarak belirtiyoruz
     $id=1;
 }
-if(!isset($title)){
+if(!isset($post["title"])){ // title yok ise tittle yi belirtiyoruz
     $title="Özel yazı";
+}else{
+    $title=$post["title"]; // title var ise tittle yi $post["title"] den çekiyoruz
 }
-if(!isset($type)){
-    $type="urgent";
+if(!isset($post["type"])){ // type yok ise type yi belirtiyoruz
+    $type="normal";
+}else {
+    $type=$post["type"]; // type var ise type yi $post["type"] den çekiyoruz
 }
-foreach ($rand_array_post as $post){
-
-    switch ($post["type"]) {
+    switch ($type) { // type için renklendirme işlemini switch ile yapıyoruz
         case "urgent":
             $color="background-color: red;";
             break;
@@ -55,12 +57,9 @@ foreach ($rand_array_post as $post){
 
 
     //echo $id." ".$post["title"]." ".$post["type"]."<br>";
-    echo "<div style='". $color."'>";
-    echo getPostDetails($id,$post["title"])."</div>";
+    echo "<div style='". $color."'>";//renklenecek divi burda başlatıyoruz
+    echo getPostDetails($id,$title)."</div>"; //gelen id ve title burda post detaylarını alacağımız fonksiyona gönderiyoruz
 
-    $id++;
-
-}
 
 
 //var_dump($rand_array_post);

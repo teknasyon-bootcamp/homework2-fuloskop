@@ -58,11 +58,11 @@ EOT;
 
 // Aşağıya fonksiyonu tanımlayabilirsiniz.
 
-if(!defined('NotDirect')&&!defined('NotDirect2')) {
+if(!defined('NotDirect')) { // NotDirect define edilmemiş bir sayfadan geliniyorsa bu sayfaya o isteği öldürüm alttaki mesajı döndür
     die('Direct access not permitted');
 }
 
 
-function getRandomPostCount($min, $max){
-    return rand($min, $max);
+function getRandomPostCount($min, $max){ //verilen 2 değer arasında bir rasgele sayı belirleme fonksiyonu
+    return rand($min, $max); // verilen 2 değer arasında bir rasgele sayı belirleyip onu return ediyoruz
 }
